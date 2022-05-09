@@ -67,7 +67,26 @@ public class SinglyLinkedList{
 	}
 	
 	//Adds currency object to the index of the SLL 
-	public void addCurrency(Currency obj, int node){
+	public void addCurrency(Currency obj, int index){
+		LinkNode node = start;
+		if( index < 0 ){
+			System.out.println("This index is invalid.");
+			return;
+		}
+		if ( index == 0 ){
+			this.prepend(obj);
+		} else {
+
+			while(index != -1){
+				index--;
+				if( index == 0){
+					LinkNode newNode = new LinkNode(obj);
+					newNode.next = start.next;
+					start.next = newNode;
+					break;
+				}
+			}
+		}
 	}
 	
 	//Removes Currency object from the SLL and returns a copy of object.
@@ -125,11 +144,16 @@ public class SinglyLinkedList{
 	}
 	
 	//getCurrency method which takes an index values as a parameter and returns the Currency object.
-	//public Currency getCurrency(int index){
-		//LinkNode node = new LinkNode();
+	public Currency getCurrency(int index){
+		int counter = 0;
+		LinkNode node = start;
 		
-		//return node;
-	//}
+		while( counter != index){
+			node = node.next;
+			counter++;
+		}	
+		return node.getData();
+	}
 	
 	//printList method which returns a string of all the Currency objects in the list in the order of index, tab spaced.	
 	public String printList() {

@@ -41,6 +41,17 @@ public class TestLinkedList {
 		linkedList.removeCurrency(2);
 		linkedList.printList();
 		
+		linkedList.addCurrency(currencies[8], 3); 
+		linkedList.addCurrency(currencies[9], 4);
+		linkedList.addCurrency(currencies[10], 0);
+		linkedList.addCurrency(currencies[11], 1);
+		linkedList.printList();
+		
+		
+		
+		
+		
+		
 		
 	}
 
