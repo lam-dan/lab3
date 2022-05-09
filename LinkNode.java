@@ -1,6 +1,6 @@
 public class LinkNode {
 	private Currency data = null;
-	private LinkNode next;
+	public LinkNode next;
 	
 	public LinkNode(Currency currency){
 		data = currency;

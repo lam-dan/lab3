@@ -35,7 +35,11 @@ public class TestLinkedList {
 		linkedList.prepend(currencies[5]);
 		linkedList.prepend(currencies[6]);
 		
-		System.out.println(linkedList.printList());
+		linkedList.findCurrency(new Dollar(87.43));
+		linkedList.findCurrency(new Dollar(44.56));
+		linkedList.removeCurrency(new Dollar(111.22));
+		linkedList.removeCurrency(2);
+		linkedList.printList();
 		
 		
 	}

@@ -66,36 +66,69 @@ public class SinglyLinkedList{
 		count++;
 	}
 	
-	
 	//Adds currency object to the index of the SLL 
 	public void addCurrency(Currency obj, int node){
-		
-		
 	}
 	
 	//Removes Currency object from the SLL and returns a copy of object.
 	public Currency removeCurrency(Currency obj){
+		//System.out.println("Remove currency obj " + obj.print());
+		LinkNode node = this.start;
+		int index = 0;
 		
-		return obj;
+		while(!obj.isEqual(node.getData())){
+			node = node.getNext();
+			index++;
+		}
+		Currency currencyRef = removeCurrency(index);
+		return currencyRef;
 	}
 	
-	////Removes Currency object from the SLL based on index and returns a copy of the object.
-	//public Currency removeCurrency(int index){
-		//Currency obj = new Currency
-		//return obj;
-	//}
+	//////Removes Currency object from the SLL based on index and returns a copy of the object.
+	public Currency removeCurrency(int index){
+		//System.out.println("Remove currency index at " + index);
+		if (index < 0 || index >= count) {
+			throw new IndexOutOfBoundsException();
+		}
+		LinkNode node = start;
+		for (int i = 0; i < index-1; i++) {
+			node = node.getNext();
+        }
+        if( index == 0){
+			start = node.getNext();
+		} else {
+			LinkNode next = node.getNext().getNext();
+			node.next = next;
+			return node.getData();
+		}
+		return node.getData();
+	}
+		
+	
 	
 	//Currency object as parameter and returns the node index at which the Currency is found in the list.
 	public int findCurrency(Currency obj){
 		int index = 0;
-		return index;
+		LinkNode node = this.start;
+		while(node != null){
+			if(obj.isEqual(node.getData())){
+				System.out.println("Found " + obj.print() + " at index " + index);
+				return index;
+			}
+			index++;
+			node = node.getNext();
+		}
+
+			System.out.println("Did not find " + obj.print()+ " at any index.");
+
+		return -1; 
 	}
 	
 	//getCurrency method which takes an index values as a parameter and returns the Currency object.
 	//public Currency getCurrency(int index){
+		//LinkNode node = new LinkNode();
 		
-		
-		//return Currency;
+		//return node;
 	//}
 	
 	//printList method which returns a string of all the Currency objects in the list in the order of index, tab spaced.	
@@ -111,6 +144,7 @@ public class SinglyLinkedList{
 				if(node!=null)
 				sb.append("	");
 			}
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 	
@@ -121,7 +155,6 @@ public class SinglyLinkedList{
 	
 	//countCurrency method which returns a count of Currency nodes in the list.
 	public int countCurrency(){
-		
 		return this.count;
 	}
 
